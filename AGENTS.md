@@ -12,5 +12,6 @@ Specs, decisions, status and the full conventions live in the team's working rep
 3. **Synthetic data only.** No real personal data, client documents or production systems.
 4. **Secrets only in `.env`** (git-ignored). Never commit, print or log a key. AWS access is SSO or IAM roles; no access keys.
 5. **Keep README current:** "What existed before" and "Built during the hackathon" are required by the rules.
-6. **Commit or push only when your user asks.** Conventional prefixes (`feat:`, `fix:`, `docs:`, `test:`, `chore:`, `import:`).
+6. **Only Maxim pushes to this repo** (the only writer in the `unforgd` org). Others contribute through the working repo.
+7. **Commit or push only when your user asks.** Conventional prefixes (`feat:`, `fix:`, `docs:`, `test:`, `chore:`, `import:`).
    A commit that implements a task names the task ID from `../00_repo/docs/specs/tasks.md`.
