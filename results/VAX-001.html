@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Unforgd · VAX-001</title>
+<style>body{font-family:-apple-system,Segoe UI,sans-serif;max-width:980px;margin:24px auto;padding:0 16px;color:#1a1a1a}
+table{border-collapse:collapse;width:100%;margin:8px 0 16px}td,th{border:1px solid #ddd;padding:6px 8px;text-align:left;font-size:14px}
+tr.bad{background:#fde8e8}tr.ok{background:#eefaf0}.big{font-size:20px;font-weight:600}pre{white-space:pre-wrap;background:#f6f6f6;padding:12px}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;background:#eee;font-size:12px}</style></head><body>
+<h1>Unforgd · liability check · VAX-001</h1>
+<p>Biologic vaccine, 12 pallets, 2–8 °C (synthetic) · insured value EUR 250,000 · Goods declared spoiled on arrival; insurer paid the claim and seeks recovery. <span class="tag">synthetic data</span></p>
+<h2>1. Custody chain (registered at each handover)</h2>
+<p>Chain ✔ intact: every event hash and link verified · root <code>7c8958254ae3013b27c8…</code></p>
+<table><tr><th>#</th><th>Custodian</th><th>Step</th><th>Registered data-logger readings</th></tr><tr class='ok'><td>1</td><td>BioVacc NV (Puurs, BE)</td><td>Storage and pick-up at manufacturer</td><td>in range</td></tr><tr class='bad'><td>2</td><td>FrostLine Logistics s.r.o.</td><td>Road transport Puurs → Prague</td><td>⚠ 105 min out of 2–8 °C, max 13.9 °C</td></tr><tr class='ok'><td>3</td><td>MedDistri CZ a.s.</td><td>Receipt and storage at distributor</td><td>in range</td></tr></table>
+<h2>2. Submitted documents vs registered fingerprints</h2>
+<table><tr><th>ID</th><th>Document</th><th>Registered SHA-256</th><th>Submitted SHA-256</th><th>Result</th></tr><tr class='ok'><td>VAX-001-D1</td><td>Temperature log – Storage and pick-up at manufacturer</td><td><code>a9ddd6af1cda9d3e…</code></td><td><code>a9ddd6af1cda9d3e…</code></td><td>✔ matches</td></tr><tr class='bad'><td>VAX-001-D2</td><td>Temperature log – Road transport Puurs → Prague</td><td><code>4a0307775ce8e43e…</code></td><td><code>a430c95cb926d94d…</code></td><td>✘ ALTERED after registration</td></tr><tr class='ok'><td>VAX-001-D3</td><td>Temperature log – Receipt and storage at distributor</td><td><code>ddf3fcc7c43bfa91…</code></td><td><code>ddf3fcc7c43bfa91…</code></td><td>✔ matches</td></tr></table>
+
+<h2>3. Decision (computed in code)</h2>
+<p class="big">Liable: FrostLine Logistics s.r.o. · recoverable EUR 245,000 · clauses 8.4, 11.2, 8.6</p>
+<p>Freight invoice EUR 3,800: <strong>WITHHOLD (clause 12.1)</strong> · human review required: yes</p>
+<h2>4. Explanation by AI <span class="tag">-</span> <span class="tag">unavailable (offline, no cached answer)</span></h2>
+<p>Check against the code: ✘ no model answer: run with AWS credentials (see README)</p>
+<p><em>No model answer available.</em></p>
+<h2>5. Measured</h2>
+<p class="big">The rules named the right party in 10 of 10 synthetic claims.</p>
+<p><em>Decision support for a human adjuster, not a verdict. Fingerprints prove a record was not changed and who
+registered it; they do not prove the record was true when registered.</em></p>
+</body></html>

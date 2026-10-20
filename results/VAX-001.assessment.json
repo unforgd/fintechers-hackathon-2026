@@ -1,0 +1,103 @@
+{
+ "claim_id": "VAX-001",
+ "chain": {
+  "chain_intact": true,
+  "problems": [],
+  "root": "7c8958254ae3013b27c88a8bf5cf62d19a2b5a5b2a66ba60f476ab6a00d6076e"
+ },
+ "documents": [
+  {
+   "doc_id": "VAX-001-D1",
+   "title": "Temperature log – Storage and pick-up at manufacturer",
+   "party": "BioVacc NV (Puurs, BE)",
+   "seq": 1,
+   "registered_sha256": "a9ddd6af1cda9d3e008c18ec7e042841e2b2dbaeef7e9ed044795cf209a0fa4b",
+   "submitted_sha256": "a9ddd6af1cda9d3e008c18ec7e042841e2b2dbaeef7e9ed044795cf209a0fa4b",
+   "matches": true
+  },
+  {
+   "doc_id": "VAX-001-D2",
+   "title": "Temperature log – Road transport Puurs → Prague",
+   "party": "FrostLine Logistics s.r.o.",
+   "seq": 2,
+   "registered_sha256": "4a0307775ce8e43e703329ae15aeee896101a7c56defcac71abbfe9444bc1e7b",
+   "submitted_sha256": "a430c95cb926d94d575acf99186a24104f52f27af2e8aa4429d0aea868067463",
+   "matches": false
+  },
+  {
+   "doc_id": "VAX-001-D3",
+   "title": "Temperature log – Receipt and storage at distributor",
+   "party": "MedDistri CZ a.s.",
+   "seq": 3,
+   "registered_sha256": "ddf3fcc7c43bfa911fa04e689f14e323446c3712487944f1c9d3a2ba83b2b369",
+   "submitted_sha256": "ddf3fcc7c43bfa911fa04e689f14e323446c3712487944f1c9d3a2ba83b2b369",
+   "matches": true
+  }
+ ],
+ "excursions": [
+  {
+   "seq": 1,
+   "role": "manufacturer",
+   "party": "BioVacc NV (Puurs, BE)",
+   "step": "Storage and pick-up at manufacturer",
+   "minutes_out_of_range": 0,
+   "max_c": 6.8,
+   "first_minute": null,
+   "excursion": false
+  },
+  {
+   "seq": 2,
+   "role": "carrier",
+   "party": "FrostLine Logistics s.r.o.",
+   "step": "Road transport Puurs → Prague",
+   "minutes_out_of_range": 105,
+   "max_c": 13.9,
+   "first_minute": 360,
+   "excursion": true
+  },
+  {
+   "seq": 3,
+   "role": "distributor",
+   "party": "MedDistri CZ a.s.",
+   "step": "Receipt and storage at distributor",
+   "minutes_out_of_range": 0,
+   "max_c": 6.4,
+   "first_minute": null,
+   "excursion": false
+  }
+ ],
+ "first_broken_step": {
+  "seq": 2,
+  "role": "carrier",
+  "party": "FrostLine Logistics s.r.o.",
+  "step": "Road transport Puurs → Prague",
+  "minutes_out_of_range": 105,
+  "max_c": 13.9,
+  "first_minute": 360,
+  "excursion": true
+ },
+ "altered_documents": [
+  {
+   "doc_id": "VAX-001-D2",
+   "title": "Temperature log – Road transport Puurs → Prague",
+   "party": "FrostLine Logistics s.r.o.",
+   "seq": 2,
+   "registered_sha256": "4a0307775ce8e43e703329ae15aeee896101a7c56defcac71abbfe9444bc1e7b",
+   "submitted_sha256": "a430c95cb926d94d575acf99186a24104f52f27af2e8aa4429d0aea868067463",
+   "matches": false
+  }
+ ],
+ "liable_role": "carrier",
+ "liable_party": "FrostLine Logistics s.r.o.",
+ "clauses": [
+  "8.4",
+  "11.2",
+  "8.6"
+ ],
+ "recoverable_eur": 245000,
+ "payment_decision": {
+  "freight_invoice_eur": 3800,
+  "freight_payment": "WITHHOLD (clause 12.1)"
+ },
+ "human_review": true
+}
