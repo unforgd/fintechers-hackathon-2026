@@ -8,7 +8,7 @@ Specs, decisions, status and the full conventions live in the team's working rep
 1. **Code freeze: Tue 20 Oct 2026, 13:30 CEST.** No commits after it.
 2. **Only work done during the event is judged.** Start point: tag `hackathon-start`. Never move or delete it.
    Earlier material comes in only through a separate `import:` commit naming its source, listed in the README.
-   **Never copy code from Konstantin's PartChainDemo / partpassport-demo** (he is not on this team).
+   No code from the earlier Build Station project is reused.
 3. **Synthetic data only.** No real personal data, client documents or production systems.
 4. **Secrets only in `.env`** (git-ignored). Never commit, print or log a key. AWS access is SSO or IAM roles; no access keys.
 5. **Keep README current:** "What existed before" and "Built during the hackathon" are required by the rules.
