@@ -22,7 +22,12 @@ def render(claim, a, ai, measured, anchor=None):
     ans = ai.get("answer") or {}
     val = ai.get("validation") or []
     ai_block = (f"<p>{_e(ans.get('summary', ''))}</p><h3>Draft recovery letter</h3><pre>{_e(ans.get('recovery_letter', ''))}</pre>"
-                if ans else "<p><em>No model answer available.</em></p>")
+                if ans else "<p><em>The AI step did not run in this session (no AWS login). The decision above is computed "
+                            "in code and does not depend on it; run <code>python3 demo.py --live</code> to add the explanation "
+                            "and the recovery letter.</em></p>")
+    src = str(ai.get('source') or '')
+    src_tag = 'live' if src == 'live' else ('cached' if src.startswith('cached') else 'not run')
+    val = [] if not ans else val
     anchor_block = ""
     if anchor:
         status = "✔ log root matches the on-chain anchor" if anchor.get("matches") else "✘ log root does NOT match the anchor"
@@ -45,8 +50,8 @@ tr.bad{{background:#fde8e8}}tr.ok{{background:#eefaf0}}.big{{font-size:20px;font
 <h2>3. Decision (computed in code)</h2>
 <p class="big">Liable: {_e(a['liable_party'] or 'no party (no excursion)')} · recoverable EUR {a['recoverable_eur']:,} · clauses {_e(', '.join(a['clauses']) or '–')}</p>
 <p>Freight invoice EUR {a['payment_decision']['freight_invoice_eur']:,}: <strong>{_e(a['payment_decision']['freight_payment'])}</strong> · human review required: {'yes' if a['human_review'] else 'no'}</p>
-<h2>4. Explanation by AI <span class="tag">{_e(ai.get('model') or '-')}</span> <span class="tag">{_e(ai.get('source'))}</span></h2>
-<p>Check against the code: {'✔ consistent' if not val else '✘ ' + _e('; '.join(val))}</p>
+<h2>4. Explanation by AI <span class="tag">{_e(ai.get('model') or 'Claude Opus 4.5 on Amazon Bedrock')}</span> <span class="tag">{src_tag}</span></h2>
+{('<p>Check against the code: ' + ('✔ consistent' if not val else '✘ ' + _e('; '.join(val))) + '</p>') if ans else ''}
 {ai_block}
 <h2>5. Measured</h2>
 <p class="big">The rules named the right party in {m['correct']} of {m['total']} synthetic claims.</p>
